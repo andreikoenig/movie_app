@@ -4,11 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :first_name, :last_name, :birthday, presence: true
+  validates :first_name, :last_name, :birthday, :email, presence: true
   validate :birthday_cannot_be_in_the_future
 
   def birthday_cannot_be_in_the_future
-
+    byebug
     if birthday > Date.today
       errors.add(:birthday, 'can\'t be in the future')
     end
