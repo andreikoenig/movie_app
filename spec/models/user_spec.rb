@@ -7,9 +7,9 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:first_name) }
     it { should validate_presence_of(:last_name) }
     it { should validate_presence_of(:birthday) }
-    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:email) } # redundant
   end
-  
+
   it "user cannot have birthday later than today" do
     user = FactoryGirl.build(:user)
     expect(user).to be_valid

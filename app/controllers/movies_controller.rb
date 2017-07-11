@@ -61,6 +61,16 @@ class MoviesController < ApplicationController
     end
   end
 
+  def import
+    file = params[:file][:file]
+    if file
+      Importer::CsvMovie.movie_importer(file.tempfile)
+      redirect_to movies_url, notice: 'Movies were successfully imported.'
+    else
+      redirect_to movies_url, alert: 'Not file selected.'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movie

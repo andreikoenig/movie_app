@@ -24,4 +24,10 @@
 
 <br>
 
+<%= simple_form_for :file, url: movie_importer_path, defaults: { input_html: { class: 'file importer' } } do |f| %>
+  <p>Attach Document (Max 1MB)</p>
+  <%= f.input :file, as: :file, label: false %>
+  <%= f.button :submit, 'Import Movies'%>
+<% end %>
+
 <%= link_to 'New Movie', new_movie_path %>
